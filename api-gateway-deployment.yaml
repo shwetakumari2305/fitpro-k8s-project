@@ -25,7 +25,7 @@ spec:
         - name: emailservicesvc
           value: emailservicesvc
         - name: eureka.client.serviceUrl.defaultZone
-          value: http://eurekaserver:8761/eureka
+          value: http://eurekaserversvc:8761/eureka
         - name: paymentservicesvc
           value: paymentservicesvc
         - name: productwebappsvc
