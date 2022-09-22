@@ -24,7 +24,7 @@ spec:
           value: http://eurekaserversvc:8761/eureka
         - name: spring.data.mongodb.uri
           value: mongodb://mongodbservicesvc:27017/fitpro
-        image: appointmentservice
+        image: shwetashukla23/appointmentservice:latest
         name: appointment-service-container
         ports:
         - containerPort: 8090

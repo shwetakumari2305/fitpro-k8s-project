@@ -7,10 +7,11 @@ metadata:
     app: api-gateway
   name: apigatewaysvc
 spec:
+  type: NodePort
   ports:
   - name: "8080"
     port: 8080
-    targetPort: 8080
+    nodePort: 30040
   selector:
     app: api-gateway
 

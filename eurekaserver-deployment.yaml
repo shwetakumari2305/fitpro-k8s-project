@@ -20,7 +20,7 @@ spec:
       - env:
         - name: eureka.client.serviceUrl.default-zone
           value: http://eurekaserversvc:8761/eureka/
-        image: eurekaserver
+        image: shwetashukla23/eurekaserver:latest
         name: eureka-server-container
         ports:
         - containerPort: 8761

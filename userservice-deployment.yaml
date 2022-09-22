@@ -34,7 +34,7 @@ spec:
           value: http://productwebappsvc:8087/#/
         - name: spring.data.mongodb.host
           value: mongodbservicesvc
-        image: userservice
+        image: shwetashukla23/userservice:latest
         name: user-service-container
         ports:
         - containerPort: 8083

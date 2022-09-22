@@ -32,7 +32,7 @@ spec:
           value: productwebappsvc
         - name: userservicesvc
           value: userservicesvc
-        image: api-gateway
+        image: shwetashukla23/api-gateway:latest
         name: api-gateway-container
         ports:
         - containerPort: 8080

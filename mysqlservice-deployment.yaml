@@ -26,7 +26,7 @@ spec:
           value: Global@145#
         - name: MYSQL_USERNAME
           value: root
-        image: mysql:latest
+        image: shwetashukla23/mysql:latest
         name: mysql-container
         ports:
         - containerPort: 3306
