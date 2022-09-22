@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    
+  labels:
+    app: userservice
+  name: userservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: userservice
+  template:
+    metadata:
+      labels:
+        app: userservice
+    spec:
+      containers:
+      - env:
+        - name: Domain
+          value: localhosteureka.client.serviceUrl.defaultZone=http://eurekaserversvc:8761/eureka
+        - name: enthusiast_home_page_url
+          value: http://productwebappsvc:8087/#/innovators
+        - name: enthusiast_redirect_url
+          value: http://userservicesvc:8083/api/v1/authorize/enthusiast/complete
+        - name: eureka.client.serviceUrl.defaultZone
+          value: http://eurekaserversvc:8761/eureka
+        - name: expert_home_page_url
+          value: http://productwebappsvc:8087/#/experts
+        - name: expert_redirect_url
+          value: http://userservicesvc:8083/api/v1/authorize/expert/complete
+        - name: logout_redirect_url
+          value: http://productwebappsvc:8087/#/
+        - name: spring.data.mongodb.host
+          value: mongodbservicesvc
+        image: userservice
+        name: user-service-container
+        ports:
+        - containerPort: 8083
+      restartPolicy: Always
+

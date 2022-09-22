@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  annotations:
+    
+  labels:
+    app: eurekaserver
+  name: eurekaserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eurekaserver
+  template:
+    metadata:
+      labels:
+        app: eurekaserver
+    spec:
+      containers:
+      - env:
+        - name: eureka.client.serviceUrl.default-zone
+          value: http://eurekaserversvc:8761/eureka/
+        image: eurekaserver
+        name: eureka-server-container
+        ports:
+        - containerPort: 8761
+      restartPolicy: Always
+

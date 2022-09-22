@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  annotations:
+    
+  labels:
+    app: mysqlservice
+  name: mysqlservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysqlservice
+  template:
+    metadata:
+      labels:
+        app: mysqlservice
+    spec:
+      containers:
+      - env:
+        - name: MYSQL_ALLOW_EMPTY_PASSWORD
+          value: "yes"
+        - name: MYSQL_DATABASE
+          value: AuthenticationDB
+        - name: MYSQL_ROOT_PASSWORD
+          value: Global@145#
+        - name: MYSQL_USERNAME
+          value: root
+        image: mysql:latest
+        name: mysql-container
+        ports:
+        - containerPort: 3306
+      restartPolicy: Always
+

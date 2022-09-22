@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    
+  labels:
+    app: api-gateway
+  name: api-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-gateway
+  template:
+    metadata:
+      labels:
+        app: api-gateway
+    spec:
+      containers:
+      - env:
+        - name: appointmentservicesvc
+          value: appointmentservicesvc
+        - name: authenticationservicesvc
+          value: authenticationservicesvc
+        - name: emailservicesvc
+          value: emailservicesvc
+        - name: eureka.client.serviceUrl.defaultZone
+          value: http://eurekaserver:8761/eureka
+        - name: paymentservicesvc
+          value: paymentservicesvc
+        - name: productwebappsvc
+          value: productwebappsvc
+        - name: userservicesvc
+          value: userservicesvc
+        image: api-gateway
+        name: api-gateway-container
+        ports:
+        - containerPort: 8080
+      restartPolicy: Always
+

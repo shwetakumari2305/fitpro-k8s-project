@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    
+  labels:
+    app: appointmentservice
+  name: appointmentservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: appointmentservice
+  template:
+    metadata:
+      labels:
+        app: appointmentservice
+    spec:
+      containers:
+      - env:
+        - name: MONGO_URI
+          value: mongodb://mongodbservicesvc:27017/fitpro
+        - name: eureka.client.serviceUrl.defaultZone
+          value: http://eurekaserversvc:8761/eureka
+        - name: spring.data.mongodb.uri
+          value: mongodb://mongodbservicesvc:27017/fitpro
+        image: appointmentservice
+        name: appointment-service-container
+        ports:
+        - containerPort: 8090
+      restartPolicy: Always
+

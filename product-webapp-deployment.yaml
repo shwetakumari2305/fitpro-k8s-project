@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    
+  labels:
+    app: product-webapp
+  name: product-webapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: product-webapp
+  template:
+    metadata:
+      labels:
+        app: product-webapp
+    spec:
+      containers:
+      - env:
+        - name: eureka.client.serviceUrl.defaultZone
+          value: http://eurekaserversvc:8761/eureka
+        image: product-webapp
+        name: product-webapp
+        ports:
+        - containerPort: 8087
+      restartPolicy: Always
+

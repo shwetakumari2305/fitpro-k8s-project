@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    
+  labels:
+    app: authenticationservice
+  name: authenticationservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: authenticationservice
+  template:
+    metadata:
+      labels:
+        app: authenticationservice
+    spec:
+      containers:
+      - env:
+        - name: spring.datasource.url
+          value: jdbc:mysql://mysqlservicesvc:3306/AuthenticationDB
+        image: authenticationservice
+        name: authentication-service-container
+        ports:
+        - containerPort: 8091
+      restartPolicy: Always
+

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    
+  labels:
+    app: appointmentservice
+  name: appointmentservicesvc
+spec:
+  ports:
+  - name: "8090"
+    port: 8090
+    targetPort: 8090
+  selector:
+    app: appointmentservice
+

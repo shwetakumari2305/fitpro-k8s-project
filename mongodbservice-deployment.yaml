@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  annotations:
+    
+  labels:
+    app: mongodbservice
+  name: mongodbservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongodbservice
+  template:
+    metadata:
+      labels:
+        app: mongodbservice
+    spec:
+      containers:
+      - image: mongo:latest
+        name: mongo-container
+        ports:
+        - containerPort: 27017
+      restartPolicy: Always
+

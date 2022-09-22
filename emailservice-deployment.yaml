@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    
+  labels:
+    app: emailservice
+  name: emailservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: emailservice
+  template:
+    metadata:
+      labels:
+        app: emailservice
+    spec:
+      containers:
+      - env:
+        - name: spring.rabbitmq.host
+          value: rabbitmqsvc
+        image: emailservice
+        name: email-service-container
+        ports:
+        - containerPort: 8088
+      restartPolicy: Always
+
