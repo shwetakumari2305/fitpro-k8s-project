@@ -13,4 +13,3 @@ spec:
     targetPort: 8090
   selector:
     app: appointmentservice
-
